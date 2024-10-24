@@ -49,7 +49,7 @@ class UserCRUDController extends Controller
      */
     public function show(User $user)
     {
-        $user = new ShowUserResource($user);
+        $user = new UserResource($user);
 
         return response()->json($user, 200);
     }
