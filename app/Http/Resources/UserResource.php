@@ -17,11 +17,17 @@ class UserResource extends JsonResource
         return [
             "id"=>$this->id,
             "name"=>$this->name,
+            "company_name"=>$this->company_name,
+            "phone"=>$this->phone,
             "email"=>$this->email,
-            "profile_image"=>$this->profile_image,
-            "mobile"=>$this->mobile,
+            "location"=>$this->location,
+            "your_requirements"=>$this->your_requirements,
+            "your_photo"=>$this->your_photo,
+            "gender"=>$this->gender,
+            "preferred_language"=>$this->preferred_language,
             "role"=>$this->role,
-            "isAuthorised"=> $this->isAuthorised
+            "isAuthorised"=> $this->isAuthorised,
+            "company"=>$this->company
         ];
     }
 }

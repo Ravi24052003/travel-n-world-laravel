@@ -15,6 +15,8 @@ class UserSeeder extends Seeder
     {
         User::create([
             "name"=>"Admin",
+            "company_name"=> "travelnworld",
+            "phone"=> 7290087051,
             "email"=>"tnwadmin@gmail.com",
             "password"=>"TravelAdmin@007",
             "role"=>"admin",
