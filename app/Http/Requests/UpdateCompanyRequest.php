@@ -27,7 +27,7 @@ class UpdateCompanyRequest extends FormRequest
             'company_city' => 'required|string|max:100',
             'pin_code' => 'required|string',
             'company_status' => 'nullable|string',
-            'services_offered' => 'nullable',
+            'services_offered_string' => 'nullable|string',
             'number_of_staff' => 'nullable|string',
             'about_company' => 'nullable|string|max:1000',
             'company_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'

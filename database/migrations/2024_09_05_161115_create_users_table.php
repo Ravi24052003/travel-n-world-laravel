@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('your_requirements')->nullable();
             $table->string('your_photo')->nullable();
             $table->string("password");
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('gender')->nullable();
             $table->string('preferred_language')->nullable();
             $table->string("role")->default("user");
             $table->boolean("isAuthorised")->default(false);

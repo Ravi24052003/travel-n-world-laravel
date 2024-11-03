@@ -59,53 +59,37 @@ class UserCRUDController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        
-        // Check if the current user is authorized to update this user
         if (Auth::id() != $user->id && Auth::user()->role == "user" ) {
             return response()->json(['error' => 'You are not authorized to update this user\'s data.'], 403);
         }
 
-
-        // Validate and sanitize input data
         $data = $request->validated();
-
-
-        // Handle password update
-        // if (isset($data['old_password']) && Hash::check($data['old_password'], $user->password)) {
-
 
             if (!empty($data['password'])) {
                 $user->password = $data['password']; // Hash the new password
             }
 
-
-        // }
-        
-        // elseif (isset($data['old_password'])) {
-        //     return response()->json(['error' => 'The provided old password is incorrect.'], 400);
-        // }
-
         // Handle profile image update
-        if ($request->hasFile('image')) {
-            if (!empty($user->profile_image)) {
-                $oldImagePath = public_path()."/storage"."/$user->profile_image";
+        if ($request->hasFile('user_image')) {
+            if (!empty($user->your_photo)) {
+                $oldImagePath = public_path()."/storage"."/$user->your_photo";
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }
             }
 
-            $image = $request->file('image');
-            $newImagePath = $image->store('profile_images', 'public');
-            $data['profile_image'] = $newImagePath;
+            $image = $request->file('user_image');
+            $newImagePath = $image->store('user_images', 'public');
+            $data['your_photo'] = $newImagePath;
         }
 
         // Remove the profile_image key if it was not provided in the request
-        Arr::forget($data, 'image');
+        Arr::forget($data, 'user_image');
 
         // Update user with new data
         $user->update($data);
 
-        return response()->json(['success' => 'User is updated successfully', "updatedUser"=>$user], 200);
+        return response()->json(['success' => 'User is updated successfully', "updatedUser"=> new UserResource($user)], 200);
     }
 
 

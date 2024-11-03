@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCompanyRequest;
+use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Resources\CompanyResponse;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -61,9 +62,30 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCompanyRequest $request, Company $company)
     {
-        
+        $data = $request->validated();
+        $data["services_offered"] = json_decode($data["services_offered_string"]);
+
+        if ($request->hasFile('company_image')){
+            if (!empty($company->company_logo)) {
+                $oldImagePath = public_path()."/storage"."/$company->company_logo";
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+
+            $image = $request->file('company_image');
+            $newImagePath = $image->store('company_images', 'public');
+            $data['company_logo'] = $newImagePath;
+        }
+
+        Arr::forget($data, "services_offered_string");
+        Arr::forget($data, 'company_image');
+
+        $company->update($data);
+
+        return response()->json(['success' => 'company is updated successfully', "updatedCompany"=> new CompanyResponse($company)], 200);
     }
 
     /**

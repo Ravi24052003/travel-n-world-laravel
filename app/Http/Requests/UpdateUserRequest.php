@@ -18,6 +18,10 @@ class UpdateUserRequest extends FormRequest
 
         return [
             "name"=> [ "required", "string", "max:55"],
+            "company_name"=> ["required"],
+            "phone"=>["required"],
+            "location"=>["nullable"],
+            "your_requirements"=> ["nullable"],
             "password"=> [
             "nullable",
             'confirmed',
@@ -25,8 +29,9 @@ class UpdateUserRequest extends FormRequest
             ->letters()
             ->symbols()
             ],
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'mobile' => 'nullable|numeric',
+            "gender"=> 'nullable|string',
+            "preferred_language" => 'nullable|string',
+            'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             "isAuthorised"=> ["nullable", "boolean"]
         ];
     }
