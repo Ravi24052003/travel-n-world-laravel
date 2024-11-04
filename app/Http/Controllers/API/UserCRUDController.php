@@ -12,6 +12,7 @@ use App\Http\Resources\SignupResource;
 use App\Http\Resources\StoreUserResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -70,7 +71,7 @@ class UserCRUDController extends Controller
             }
 
         // Handle profile image update
-        if ($request->hasFile('user_image')) {
+        if ($request->hasFile('user_image')){
             if (!empty($user->your_photo)) {
                 $oldImagePath = public_path()."/storage"."/$user->your_photo";
                 if (file_exists($oldImagePath)) {
@@ -85,7 +86,15 @@ class UserCRUDController extends Controller
 
         // Remove the profile_image key if it was not provided in the request
         Arr::forget($data, 'user_image');
-
+        
+        if ($request->has('company_name')) {
+            $companyName = $request->input('company_name');
+            $data['company_name'] = $companyName;
+            $company = Company::where('user_id', $user->id)->first();
+            if ($company) {
+                $company->update(['company_name' => $companyName]);
+            }
+        }
         // Update user with new data
         $user->update($data);
 

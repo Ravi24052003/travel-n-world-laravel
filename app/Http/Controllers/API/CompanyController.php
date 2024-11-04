@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Resources\CompanyResponse;
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +83,13 @@ class CompanyController extends Controller
 
         Arr::forget($data, "services_offered_string");
         Arr::forget($data, 'company_image');
+
+        if ($request->has('company_name')) {
+            $companyName = $request->input('company_name');
+            $data['company_name'] = $companyName; 
+            $company->user()->update(['company_name' => $companyName]);
+        }
+
 
         $company->update($data);
 
