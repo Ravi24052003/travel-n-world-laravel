@@ -20,6 +20,12 @@ class UpdateUserRequest extends FormRequest
             "name"=> [ "required", "string", "max:55"],
             "company_name"=> ["required"],
             "phone"=>["required"],
+            
+            "whatsapp"=> ["nullable"],
+            "facebook" => ["nullable"],
+            "instagram" => ["nullable"],
+            "youtube" => ["nullable"],
+
             "location"=>["nullable"],
             "your_requirements"=> ["nullable"],
             "password"=> [

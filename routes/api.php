@@ -55,3 +55,11 @@ Route::get('/migrate-seed', function(){
 
     return response("Database has been refreshed and seeded.");
 });
+
+
+
+Route::get("/get-img", function(){
+$path = storage_path("app/public/company_images/cat.jpg");
+
+return response($path);
+});

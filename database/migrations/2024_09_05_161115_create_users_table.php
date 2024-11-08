@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string("company_name");
             $table->unsignedBigInteger('phone');
             $table->string("email")->unique();
+
+            $table->unsignedBigInteger('whatsapp')->nullable();
+            $table->string("facebook")->nullable();
+            $table->string("instagram")->nullable();
+            $table->string("youtube")->nullable();
+            
             $table->string('location')->nullable();
             $table->text('your_requirements')->nullable();
             $table->string('your_photo')->nullable();

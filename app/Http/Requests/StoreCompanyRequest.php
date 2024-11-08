@@ -30,7 +30,8 @@ class StoreCompanyRequest extends FormRequest
             'services_offered_string' => 'nullable|string',
             'number_of_staff' => 'nullable|string',
             'about_company' => 'nullable|string|max:1000',
-            'company_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'company_image' => 'nullable|image|max:2048',
+             "company_website" => "nullable"
         ];
     }
 

@@ -19,6 +19,12 @@ class UserResource extends JsonResource
             "name"=>$this->name,
             "company_name"=>$this->company_name,
             "phone"=>$this->phone,
+
+            "whatsapp"=>$this->whatsapp,
+            "facebook"=>$this->facebook,
+            "instagram"=> $this->instagram,
+            "youtube" => $this->youtube,
+            
             "email"=>$this->email,
             "location"=>$this->location,
             "your_requirements"=>$this->your_requirements,

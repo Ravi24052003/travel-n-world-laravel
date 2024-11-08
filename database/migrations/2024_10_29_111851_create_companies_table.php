@@ -23,6 +23,7 @@ return new class extends Migration
             $table->json('services_offered')->nullable();
             $table->string('number_of_staff')->nullable();
             $table->text('about_company')->nullable();
+            $table->string("company_website")->nullable();
             $table->timestamps();
         });
     }

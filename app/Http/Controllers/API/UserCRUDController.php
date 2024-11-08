@@ -34,13 +34,13 @@ class UserCRUDController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request)
+    public function store(UserResource $request)
     {
         $data = $request->validated();
 
         $user = User::create($data);
    
-        $res = new StoreUserResource($user);
+        $res = new UserResource($user);
    
         return response()->json(["status"=>true, "message"=>"User created successfully", "user"=>$res], 201);
     }
