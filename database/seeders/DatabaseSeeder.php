@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         //     "role"=>"admin"
         // ]);
 
-        $this->call([UserSeeder::class]);
+        $this->call([UserCompanySeeder::class]);
     }
 }
