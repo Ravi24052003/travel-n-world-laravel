@@ -20,46 +20,38 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 
-Route::get('/storage-link', function(){
-    Artisan::call('storage:link');
+// Route::get('/storage-link', function(){
+//     Artisan::call('storage:link');
 
-    return response("symbolic link created successfully");
-});
-
-
-Route::get("/unlink", function(){
-    $publicStorageLink = public_path('storage');
-
-    if (File::exists($publicStorageLink) && File::isDirectory($publicStorageLink)) {
-        rmdir($publicStorageLink);
-        return response("symbolic link removed successfully");
-    } else {
-        return response("Symbolic link does not exists");
-    }
-});
+//     return response("symbolic link created successfully");
+// });
 
 
+// Route::get("/unlink", function(){
+//     $publicStorageLink = public_path('storage');
 
-Route::get('/migrate', function(){
-    Artisan::call('migrate', ['--force' => true]);
-
-    return response("Database migrations completed successfully");
-});
-
-
-Route::get('/migrate-seed', function(){
-    Artisan::call('migrate:fresh', [
-        '--force' => true,
-        '--seed' => true,
-    ]);
-
-    return response("Database has been refreshed and seeded.");
-});
+//     if (File::exists($publicStorageLink) && File::isDirectory($publicStorageLink)) {
+//         rmdir($publicStorageLink);
+//         return response("symbolic link removed successfully");
+//     } else {
+//         return response("Symbolic link does not exists");
+//     }
+// });
 
 
 
-Route::get("/get-img", function(){
-$path = storage_path("app/public/company_images/cat.jpg");
+// Route::get('/migrate', function(){
+//     Artisan::call('migrate', ['--force' => true]);
 
-return response($path);
-});
+//     return response("Database migrations completed successfully");
+// });
+
+
+// Route::get('/migrate-seed', function(){
+//     Artisan::call('migrate:fresh', [
+//         '--force' => true,
+//         '--seed' => true,
+//     ]);
+
+//     return response("Database has been refreshed and seeded.");
+// });

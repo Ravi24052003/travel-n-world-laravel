@@ -73,15 +73,18 @@ class UserCRUDController extends Controller
         // Handle profile image update
         if ($request->hasFile('user_image')){
             if (!empty($user->your_photo)) {
-                $oldImagePath = public_path()."/storage"."/$user->your_photo";
+                $oldImagePath = public_path($user->your_photo);
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }
             }
 
             $image = $request->file('user_image');
-            $newImagePath = $image->store('user_images', 'public');
-            $data['your_photo'] = $newImagePath;
+            $directory = public_path('user_images');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            
+            $newImagePath = $image->move($directory, $filename);
+            $data['your_photo'] = 'user_images/'.$filename;
         }
 
         // Remove the profile_image key if it was not provided in the request
