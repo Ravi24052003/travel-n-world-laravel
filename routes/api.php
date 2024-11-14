@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CompanyController;
+use App\Http\Controllers\API\PublicController;
 use App\Http\Controllers\API\UserCRUDController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,7 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::post('logout', [AuthController::class, "logout"]);
 });
 
-Route::get('public-companies', [CompanyController::class, 'index']);
+Route::get('public-companies', [PublicController::class, 'getCompanies']);
 
 
 // Route::get('/storage-link', function(){
