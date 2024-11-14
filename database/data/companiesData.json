@@ -34,9 +34,9 @@
   {
       "_id": 5,
       "company_name": "Perfect Planners",
-      "company_address": "",
-      "company_city": "",
-      "pin_code": "",
+      "company_address": "not available",
+      "company_city": "not available",
+      "pin_code": "000000",
       "company_website": "https://perfectplannerco.com/"
   },
   {
