@@ -19,6 +19,8 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::post('logout', [AuthController::class, "logout"]);
 });
 
+Route::get('public-companies', [CompanyController::class, 'index']);
+
 
 // Route::get('/storage-link', function(){
 //     Artisan::call('storage:link');
