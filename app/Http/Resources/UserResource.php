@@ -32,7 +32,9 @@ class UserResource extends JsonResource
             "gender"=>$this->gender,
             "preferred_language"=>$this->preferred_language,
             "role"=>$this->role,
-            "isAuthorised"=> $this->isAuthorised,
+            "is_authorised"=> $this->is_authorised,
+            "is_publicly_present"=> $this->is_publicly_present,
+            "is_verified"=> $this->is_verified,
             "company"=>$this->company
         ];
     }

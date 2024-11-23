@@ -30,7 +30,9 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('preferred_language')->nullable();
             $table->string("role")->default("user");
-            $table->boolean("isAuthorised")->default(false);
+            $table->boolean("is_authorised")->default(false);
+            $table->boolean("is_publicly_present")->default(false);
+            $table->boolean("is_verified")->default(false);
             $table->timestamps();
         });
     }

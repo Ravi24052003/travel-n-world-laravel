@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id(); // Primary key
             $table->foreignId('user_id')->references("id")->on("users")->cascadeOnUpdate()->cascadeOnDelete(); // Foreign key with cascading delete
             $table->json('days_information'); // JSON column for days details
-            $table->longText('detination_detail'); // Long text for destination detail
+            $table->longText('destination_detail'); // Long text for destination detail
             $table->string('inclusion'); // String column for inclusion
             $table->string('exclusion'); // String column for exclusion
             $table->json('hotel_details'); // JSON column for hotel details
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->json('duration'); // JSON column for duration
             $table->json('selected_destination'); // JSON column for selected destination
             $table->json('itinerary_theme'); // JSON column for itinerary theme
-            $table->string('detination_thumbnail'); // String column for destination thumbnail
-            $table->json('detination_images'); // JSON column for destination images
+            $table->string('destination_thumbnail'); // String column for destination thumbnail
+            $table->json('destination_images'); // JSON column for destination images
             $table->timestamps(); // Created at and updated at timestamps
         });
     }

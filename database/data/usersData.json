@@ -10,7 +10,9 @@
       "facebook": "",
       "instagram": "https://www.instagram.com/travelsyug_/profilecard/?igsh=aTNudnpyYzltbjhw",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 2,
@@ -23,7 +25,9 @@
       "facebook": "https://www.facebook.com/kamakshi.holidays",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 3,
@@ -36,7 +40,9 @@
       "facebook": "https://www.facebook.com/southindiaholiday",
       "instagram": "https://www.instagram.com/kodaitipsndtrips/",
       "youtube": "https://www.youtube.com/channel/UCcVxN7dwx49anVmspOUrHLg",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 4,
@@ -49,7 +55,9 @@
       "facebook": "",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 5,
@@ -62,7 +70,9 @@
       "facebook": "https://www.facebook.com/perfectplannerco",
       "instagram": "https://www.instagram.com/perfectplanner.company/",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 6,
@@ -75,7 +85,9 @@
       "facebook": "",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 7,
@@ -88,7 +100,9 @@
       "facebook": "https://www.facebook.com/profile.php?id=100095314801749&mibextid=JRoKGi",
       "instagram": "https://www.instagram.com/justkeeptravel_official/",
       "youtube": "https://www.youtube.com/@alokdiwan6122",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 8,
@@ -101,7 +115,9 @@
       "facebook": "",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 9,
@@ -114,7 +130,9 @@
       "facebook": "https://www.facebook.com/himalayancircle",
       "instagram": "https://www.instagram.com/himalayancircle",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 10,
@@ -127,7 +145,9 @@
       "facebook": "",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
   },
   {
       "_id": 11,
@@ -140,6 +160,174 @@
       "facebook": "",
       "instagram": "",
       "youtube": "",
-      "isAuthorised": 1
+      "is_authorised": 1,
+      "is_publicly_present": 1,
+      "is_verified": 1
+  },
+
+  {
+    "_id": 12,
+    "name": "Wanderlust Travel World",
+    "company_name": "Wanderlust Travel World",
+    "phone": "7407300991",
+    "whatsapp": "7407300991",
+    "email": "wanderlusttravelworld@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 13,
+    "name": "RR Tours and Travels",
+    "company_name": "RR Tours and Travels",
+    "phone": "6304234227",
+    "whatsapp": "6304234227",
+    "email": "ravirajendar24@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 14,
+    "name": "Finna Travel",
+    "company_name": "Finna Travel",
+    "phone": "7006457689",
+    "whatsapp": "7006457689",
+    "email": "finnatravels@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 15,
+    "name": "Bharat Ecab",
+    "company_name": "Bharat Ecab",
+    "phone": "8882906451",
+    "whatsapp": "8882906451",
+    "email": "bharatecab00@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 16,
+    "name": "Trip Bouquet",
+    "company_name": "Trip Bouquet",
+    "phone": "7303193848",
+    "whatsapp": "7303193848",
+    "email": "support@tripbouquet.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 17,
+    "name": "Trawell.in",
+    "company_name": "Trawell.in",
+    "phone": "7799591230",
+    "whatsapp": "7799591230",
+    "email": "trawell.in@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 18,
+    "name": "Qugo",
+    "company_name": "Qugo",
+    "phone": "7411940703",
+    "whatsapp": "7411940703",
+    "email": "bhalltravels@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 19,
+    "name": "Bhalla Travels",
+    "company_name": "Bhalla Travels",
+    "phone": "7678223408",
+    "whatsapp": "7678223408",
+    "email": "bhallatravels@gmail.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 20,
+    "name": "Cute Voyages",
+    "company_name": "Cute Voyages",
+    "phone": "8121202999",
+    "whatsapp": "8121202999",
+    "email": "sales@cutevoyages.in",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 21,
+    "name": "Holiday Trip Advisor",
+    "company_name": "Holiday Trip Advisor",
+    "phone": "8197200830",
+    "whatsapp": "8197200830",
+    "email": "info@holidaytripadvisor.in",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
+  },
+  {
+    "_id": 22,
+    "name": "Trip To Sky Pvt Ltd",
+    "company_name": "Trip To Sky Pvt Ltd",
+    "phone": "8374837460",
+    "whatsapp": "8374837460",
+    "email": "care@trip2sky.com",
+    "password": "User@12345",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "is_authorised": 1,
+    "is_publicly_present": 1,
+    "is_verified": 0
   }
 ]

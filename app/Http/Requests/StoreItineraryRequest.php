@@ -21,7 +21,7 @@ class StoreItineraryRequest extends FormRequest
     {
         return [
             'days_information_string' => 'required|string',
-            'detination_detail' => 'required|string',
+            'destination_detail' => 'required|string',
             'inclusion' => 'required|string|max:255',
             'exclusion' => 'required|string|max:255',
             'hotel_details_string' => 'required|string',
@@ -34,10 +34,10 @@ class StoreItineraryRequest extends FormRequest
             'duration_string' => 'required|string',
             'selected_destination_string' => 'required|string',
             'itinerary_theme_string' => 'required|string',
-            'detination_thumbnail' => 'nullable|string|max:255', // This will be handled after upload
-            'detination_images' => 'nullable', // This will be handled after upload
+            'destination_thumbnail' => 'nullable|string|max:255', // This will be handled after upload
+            'destination_images' => 'nullable', // This will be handled after upload
             'destination_thumbnail_file' => 'nullable|image|max:2048', // 2MB max size
-            'destination_images_files' => 'nullable|image|max:2048', // Multiple images
+            'destination_images_files' => 'nullable', // Multiple images
         ];
     }
 }

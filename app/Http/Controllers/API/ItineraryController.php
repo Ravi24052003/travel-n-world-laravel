@@ -43,7 +43,7 @@ class ItineraryController extends Controller
           
             $thumbnail_filename = time() . '_' . uniqid() . '.' . $thumbnail_file->getClientOriginalExtension();
             $thumbnail_file->move($directory, $thumbnail_filename);
-            $data["detination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
+            $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }
 
         // Handle detination_images
@@ -57,9 +57,8 @@ class ItineraryController extends Controller
                 $images_paths[] = 'itinerary_images/' . $image_filename; // adds the value to the next available index in the array.
             }
 
-            $data["detination_images"] = json_encode($images_paths);
+            $data["destination_images"] = json_encode($images_paths);
         }
-
 
         Arr::forget($data, "days_information_string");
         Arr::forget($data, "hotel_details_string");

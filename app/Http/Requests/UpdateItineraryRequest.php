@@ -21,7 +21,7 @@ class UpdateItineraryRequest extends FormRequest
     {
         return [
             'days_information_string' => 'sometimes|string',
-            'detination_detail' => 'sometimes|string',
+            'destination_detail' => 'sometimes|string',
             'inclusion' => 'sometimes|string|max:255',
             'exclusion' => 'sometimes|string|max:255',
             'hotel_details_string' => 'sometimes|string',
@@ -34,8 +34,8 @@ class UpdateItineraryRequest extends FormRequest
             'duration_string' => 'sometimes|string',
             'selected_destination_string' => 'sometimes|string',
             'itinerary_theme_string' => 'sometimes|string',
-            'detination_thumbnail' => 'nullable|string|max:255', // This will be handled after upload
-            'detination_images' => 'nullable', // This will be handled after upload
+            'destination_thumbnail' => 'nullable|string|max:255', // This will be handled after upload
+            'destination_images' => 'nullable', // This will be handled after upload
             'destination_thumbnail_file' => 'nullable|image|max:2048', // 2MB max size
             'destination_images_files' => 'nullable|image|max:2048', // Multiple images
         ];

@@ -37,8 +37,10 @@ class UpdateUserRequest extends FormRequest
             ],
             "gender"=> 'nullable|string',
             "preferred_language" => 'nullable|string',
-            'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            "isAuthorised"=> ["nullable", "boolean"]
+            'user_image' => 'nullable|image|max:2048',
+            "is_authorised"=> ["nullable", "boolean"],
+            "is_publicly_present"=> ["nullable", "boolean"],
+            "is_verified"=> ["nullable", "boolean"]
         ];
     }
 
