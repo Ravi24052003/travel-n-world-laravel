@@ -37,7 +37,7 @@ class StoreItineraryRequest extends FormRequest
             'destination_thumbnail' => 'nullable|string|max:255', // This will be handled after upload
             'destination_images' => 'nullable', // This will be handled after upload
             'destination_thumbnail_file' => 'nullable|image|max:2048', // 2MB max size
-            'destination_images_files' => 'nullable', // Multiple images
+            'destination_images_files.*' => 'nullable|image|max:2048', // Multiple images
         ];
     }
 }

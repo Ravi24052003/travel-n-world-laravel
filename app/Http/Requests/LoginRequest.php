@@ -18,7 +18,7 @@ class LoginRequest extends FormRequest
         $user = User::where("email", request()->input("email"))->first();
 
         if(!empty($user)){
-            if($user->isAuthorised){
+            if($user->is_authorised){
                 return true;
             }
             else{

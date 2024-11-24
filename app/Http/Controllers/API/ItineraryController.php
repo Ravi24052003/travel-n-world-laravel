@@ -46,7 +46,7 @@ class ItineraryController extends Controller
             $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }
 
-        // Handle detination_images
+        // Handle destination_images
         if ($request->hasFile("destination_images_files")) {
             $image_files = $request->file("destination_images_files");
             $images_paths = [];
@@ -57,17 +57,18 @@ class ItineraryController extends Controller
                 $images_paths[] = 'itinerary_images/' . $image_filename; // adds the value to the next available index in the array.
             }
 
-            $data["destination_images"] = json_encode($images_paths);
+            $data["destination_images"] = $images_paths;
         }
 
-        Arr::forget($data, "days_information_string");
-        Arr::forget($data, "hotel_details_string");
-        Arr::forget($data, "duration_string");
-        Arr::forget($data, "selected_destination_string");
-        Arr::forget($data, "itinerary_theme_string");
-
-        Arr::forget($data, "destination_thumbnail_file");
-        Arr::forget($data, "destination_images_files");
+        Arr::forget($data, [
+            "days_information_string",
+            "hotel_details_string",
+            "duration_string",
+            "selected_destination_string",
+            "itinerary_theme_string",
+            "destination_thumbnail_file",
+            "destination_images_files"
+        ]);
 
         $itinerary = Itinerary::create($data);
 
@@ -118,8 +119,8 @@ class ItineraryController extends Controller
         // Handle destination_thumbnail update
         if ($request->hasFile("destination_thumbnail_file")){
             // Delete the old thumbnail if it exists
-            if (!empty($itinerary->detination_thumbnail)) {
-                $oldThumbnailPath = public_path($itinerary->detination_thumbnail);
+            if (!empty($itinerary->destination_thumbnail)) {
+                $oldThumbnailPath = public_path($itinerary->destination_thumbnail);
                 if (file_exists($oldThumbnailPath)) {
                     unlink($oldThumbnailPath);
                 }
@@ -128,14 +129,14 @@ class ItineraryController extends Controller
             $thumbnail_file = $request->file("destination_thumbnail_file");
             $thumbnail_filename = time() . '_' . uniqid() . '.' . $thumbnail_file->getClientOriginalExtension();
             $thumbnail_file->move($directory, $thumbnail_filename);
-            $data["detination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
+            $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }
 
-        // Handle detination_images update
+        // Handle destination_images update
         if ($request->hasFile("destination_images_files")) {
             // Delete old images if they exist
-            if (!empty($itinerary->detination_images)) {
-                $oldImages = json_decode($itinerary->detination_images, true);
+            if (!empty($itinerary->destination_images)) {
+                $oldImages = json_decode($itinerary->destination_images, true);
                 foreach ($oldImages as $oldImagePath) {
                     $fullPath = public_path($oldImagePath);
                     if (file_exists($fullPath)) {
@@ -153,17 +154,18 @@ class ItineraryController extends Controller
                 $images_paths[] = 'itinerary_images/' . $image_filename;
             }
 
-            $data["detination_images"] = json_encode($images_paths);
+            $data["destination_images"] = $images_paths;
         }
 
-            Arr::forget($data, "days_information_string");
-            Arr::forget($data, "hotel_details_string");
-            Arr::forget($data, "duration_string");
-            Arr::forget($data, "selected_destination_string");
-            Arr::forget($data, "itinerary_theme_string");
-    
-            Arr::forget($data, "destination_thumbnail_file");
-            Arr::forget($data, "destination_images_files");
+        Arr::forget($data, [
+        "days_information_string",
+        "hotel_details_string",
+        "duration_string",
+        "selected_destination_string",
+        "itinerary_theme_string",
+        "destination_thumbnail_file",
+        "destination_images_files"
+        ]);
 
         $itinerary->update($data);
 
@@ -179,16 +181,16 @@ class ItineraryController extends Controller
     public function destroy(Itinerary $id)
     {
         // Delete thumbnail if it exists
-        if (!empty($id->detination_thumbnail)) {
-            $thumbnailPath = public_path($id->detination_thumbnail);
+        if (!empty($id->destination_thumbnail)) {
+            $thumbnailPath = public_path($id->destination_thumbnail);
             if (file_exists($thumbnailPath)) {
                 unlink($thumbnailPath);
             }
         }
 
         // Delete images if they exist
-        if (!empty($id->detination_images)) {
-            $images = json_decode($id->detination_images, true);
+        if (!empty($id->destination_images)) {
+            $images = json_decode($id->destination_images, true);
             foreach ($images as $imagePath) {
                 $fullPath = public_path($imagePath);
                 if (file_exists($fullPath)) {

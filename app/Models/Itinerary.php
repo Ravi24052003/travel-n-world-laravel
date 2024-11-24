@@ -18,7 +18,8 @@ class Itinerary extends Model
         'hotel_details' => 'array',
         'duration' => 'array',
         'selected_destination' => 'array',
-        'itinerary_theme' => 'array'
+        'itinerary_theme' => 'array',
+        'destination_images' => 'array'
     ];
 
     public function user()

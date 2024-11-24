@@ -21,7 +21,9 @@ class UserCompanySeeder extends Seeder
             "email"=>"admireholidays7@gmail.com",
             "password"=>"Admire@2024",
             "role"=>"admin",
-            "isAuthorised"=>true
+            "is_authorised"=> true,
+            "is_publicly_present"=> false,
+            "is_verified"=> true
         ]);
 
 
@@ -40,11 +42,14 @@ class UserCompanySeeder extends Seeder
                 'instagram' => $userData['instagram'],
                 'youtube' => $userData['youtube'],
                 'password' => "User@12345", 
-                'isAuthorised'=> 1
+                'is_authorised'=> $userData["is_authorised"],
+                "is_publicly_present"=>$userData["is_publicly_present"] ,
+                "is_verified"=> $userData["is_verified"]
             ]);
 
+            if(!empty($companies[$index])){
             $companyData = $companies[$index];
-
+            
             if($companyData['_id'] == $users[$index]['_id']){
                 $user->company()->create([
                     'company_name' => $companyData['company_name'],
@@ -54,8 +59,10 @@ class UserCompanySeeder extends Seeder
                     'company_website' => $companyData['company_website']
                     ]);
             }
+            
+            }
 
-           
+          
     }
 
 
