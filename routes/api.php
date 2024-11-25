@@ -20,6 +20,8 @@ Route::middleware("auth:sanctum")->group(function(){
 
     Route::apiResource("itinerary", ItineraryController::class);
 
+    Route::get('user-itineraries', [ItineraryController::class, "userItineraries"]);
+
     Route::post('logout', [AuthController::class, "logout"]);
 });
 

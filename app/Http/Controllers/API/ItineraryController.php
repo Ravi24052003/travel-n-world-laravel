@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreItineraryRequest;
 use App\Http\Requests\UpdateItineraryRequest;
+use App\Http\Resources\ItineraryResource;
 use App\Models\Itinerary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -17,8 +18,19 @@ class ItineraryController extends Controller
      */
     public function index()
     {
-        $itineraries = Itinerary::with('user')->get(); // Include user relationship
-        return response()->json($itineraries, 200);
+        $itineraries = Itinerary::all(); // Include user relationship
+
+        $itinerariesResource = ItineraryResource::collection($itineraries);
+        return response()->json($itinerariesResource, 200);
+    }
+
+
+    public function userItineraries()
+    {
+        $itineraries = Itinerary::where("user_id", Auth::id())->get(); // Include user relationship
+
+        $itinerariesResource = ItineraryResource::collection($itineraries);
+        return response()->json($itinerariesResource, 200);
     }
 
     /**
@@ -74,16 +86,16 @@ class ItineraryController extends Controller
 
         return response()->json([
             'success' => 'Itinerary created successfully',
-            'itinerary' => $itinerary,
+            'itinerary' => new ItineraryResource($itinerary),
         ], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Itinerary $id)
+    public function show(Itinerary $itinerary)
     {
-        return response()->json($id, 200);
+        return response()->json(new ItineraryResource($itinerary), 200);
     }
 
     /**
@@ -136,7 +148,7 @@ class ItineraryController extends Controller
         if ($request->hasFile("destination_images_files")) {
             // Delete old images if they exist
             if (!empty($itinerary->destination_images)) {
-                $oldImages = json_decode($itinerary->destination_images, true);
+                $oldImages = $itinerary->destination_images;
                 foreach ($oldImages as $oldImagePath) {
                     $fullPath = public_path($oldImagePath);
                     if (file_exists($fullPath)) {
@@ -171,26 +183,26 @@ class ItineraryController extends Controller
 
         return response()->json([
             'success' => 'Itinerary updated successfully',
-            'updatedItinerary' => $itinerary,
+            'updatedItinerary' => new ItineraryResource($itinerary),
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Itinerary $id)
+    public function destroy(Itinerary $itinerary)
     {
         // Delete thumbnail if it exists
-        if (!empty($id->destination_thumbnail)) {
-            $thumbnailPath = public_path($id->destination_thumbnail);
+        if (!empty($itinerary->destination_thumbnail)) {
+            $thumbnailPath = public_path($itinerary->destination_thumbnail);
             if (file_exists($thumbnailPath)) {
                 unlink($thumbnailPath);
             }
         }
 
         // Delete images if they exist
-        if (!empty($id->destination_images)) {
-            $images = json_decode($id->destination_images, true);
+        if (!empty($itinerary->destination_images)) {
+            $images = $itinerary->destination_images;
             foreach ($images as $imagePath) {
                 $fullPath = public_path($imagePath);
                 if (file_exists($fullPath)) {
@@ -199,7 +211,7 @@ class ItineraryController extends Controller
             }
         }
 
-        $id->delete();
+        $itinerary->delete();
 
         return response()->json(['success' => 'Itinerary deleted successfully'], 200);
     }
