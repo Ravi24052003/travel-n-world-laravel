@@ -10,6 +10,7 @@ use App\Models\Itinerary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ItineraryController extends Controller
 {
@@ -50,21 +51,21 @@ class ItineraryController extends Controller
 
         $directory = public_path('itinerary_images');
         // Handle destination_thumbnail
-        if ($request->hasFile("destination_thumbnail_file")) {
+        if ($request->hasFile("destination_thumbnail_file")){
             $thumbnail_file = $request->file("destination_thumbnail_file");
           
-            $thumbnail_filename = time() . '_' . uniqid() . '.' . $thumbnail_file->getClientOriginalExtension();
+            $thumbnail_filename = time() . '_' . uniqid(). Str::random(8) . '.' . $thumbnail_file->getClientOriginalExtension();
             $thumbnail_file->move($directory, $thumbnail_filename);
             $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }
 
         // Handle destination_images
-        if ($request->hasFile("destination_images_files")) {
+        if ($request->hasFile("destination_images_files")){
             $image_files = $request->file("destination_images_files");
             $images_paths = [];
 
             foreach ($image_files as $image_file) {
-                $image_filename = time() . '_' . uniqid() . '.' . $image_file->getClientOriginalExtension();
+                $image_filename = time() . '_' . uniqid() . Str::random(8) . '.' . $image_file->getClientOriginalExtension();
                 $image_file->move($directory, $image_filename);
                 $images_paths[] = 'itinerary_images/' . $image_filename; // adds the value to the next available index in the array.
             }
@@ -139,7 +140,7 @@ class ItineraryController extends Controller
             }
 
             $thumbnail_file = $request->file("destination_thumbnail_file");
-            $thumbnail_filename = time() . '_' . uniqid() . '.' . $thumbnail_file->getClientOriginalExtension();
+            $thumbnail_filename = time() . '_' . uniqid() . Str::random(8) . '.' . $thumbnail_file->getClientOriginalExtension();
             $thumbnail_file->move($directory, $thumbnail_filename);
             $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }
@@ -161,7 +162,7 @@ class ItineraryController extends Controller
             $images_paths = [];
 
             foreach ($image_files as $image_file) {
-                $image_filename = time() . '_' . uniqid() . '.' . $image_file->getClientOriginalExtension();
+                $image_filename = time() . '_' . uniqid() . Str::random(8) . '.' . $image_file->getClientOriginalExtension();
                 $image_file->move($directory, $image_filename);
                 $images_paths[] = 'itinerary_images/' . $image_filename;
             }

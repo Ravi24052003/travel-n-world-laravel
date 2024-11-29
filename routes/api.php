@@ -25,7 +25,7 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::post('logout', [AuthController::class, "logout"]);
 });
 
-Route::get('public-companies', [PublicController::class, 'getCompanies']);
+require __DIR__.'/public_routes.php';
 
 
 // Route::get('/storage-link', function(){
