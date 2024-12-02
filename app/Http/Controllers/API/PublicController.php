@@ -30,7 +30,7 @@ class PublicController extends Controller
     public function getItineraries($destination){
 
    // Convert the destination to the required format (lowercase or exact match based on your needs)
-   $destination = ucfirst(strtolower($destination));  // Assuming you want "Delhi" or any case-insensitive match
+   // Assuming you want "Delhi" or any case-insensitive match
         
    // Query the itineraries based on the selected_destination field
    $itineraries = Itinerary::whereJsonContains('selected_destination->value', $destination)
