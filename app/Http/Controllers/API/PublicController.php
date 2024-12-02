@@ -34,6 +34,7 @@ class PublicController extends Controller
         
    // Query the itineraries based on the selected_destination field
    $itineraries = Itinerary::whereJsonContains('selected_destination->value', $destination)
+                     ->where('itinerary_visibility', 'public')
                     ->whereHas('user', function ($query) {
                     // Add conditions for the user's authorization and visibility
                     $query->where('is_authorised', true)
