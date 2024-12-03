@@ -22,8 +22,10 @@ class UpdateItineraryRequest extends FormRequest
         return [
             'days_information_string' => 'sometimes|string',
             'destination_detail' => 'sometimes|string',
-            'inclusion' => 'sometimes|string|max:255',
-            'exclusion' => 'sometimes|string|max:255',
+            'inclusion' => 'sometimes|string',
+            'exclusion' => 'sometimes|string',
+            'terms_and_conditions' => 'sometimes|string',
+            'pricing' => 'sometimes',
             'hotel_details_string' => 'sometimes|string',
             'title' => 'sometimes|string|max:255',
             'meta_title' => 'nullable|string|max:255',

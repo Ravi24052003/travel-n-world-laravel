@@ -22,6 +22,8 @@ class ItineraryResource extends JsonResource
         "destination_detail" => $this->destination_detail,
         "inclusion" => $this->inclusion,
         "exclusion" => $this->exclusion,
+        'terms_and_conditions' => $this->terms_and_conditions,
+        'pricing' => $this->pricing,
         "hotel_details" => $this->hotel_details,
         "title" => $this->title,
         "meta_title" => $this->meta_title,

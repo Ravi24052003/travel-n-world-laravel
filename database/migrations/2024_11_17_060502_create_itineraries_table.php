@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->references("id")->on("users")->cascadeOnUpdate()->cascadeOnDelete(); // Foreign key with cascading delete
             $table->json('days_information'); // JSON column for days details
             $table->longText('destination_detail'); // Long text for destination detail
-            $table->string('inclusion'); // String column for inclusion
-            $table->string('exclusion'); // String column for exclusion
+            $table->longText('inclusion'); // Long text for inclusion
+            $table->longText('exclusion'); // Long text for exclusion
+            $table->longText('terms_and_conditions')->nullable(); // Long text for terms and conditions
+            $table->unsignedBigInteger('pricing')->nullable(); 
             $table->json('hotel_details'); // JSON column for hotel details
             $table->string('title'); // Title
             $table->string('meta_title')->nullable(); // Nullable meta title
