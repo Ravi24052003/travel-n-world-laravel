@@ -25,7 +25,7 @@ class StoreItineraryRequest extends FormRequest
             'inclusion' => 'required|string',
             'exclusion' => 'required|string',
             'terms_and_conditions' => 'nullable|string',
-            'pricing' => 'nullable',
+            'pricing' => 'required|numeric',
             'hotel_details_string' => 'required|string',
             'title' => 'required|string|max:255',
             'meta_title' => 'nullable|string|max:255',
