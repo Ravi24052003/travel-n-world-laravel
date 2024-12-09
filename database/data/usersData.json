@@ -164,9 +164,23 @@
         "is_publicly_present": 1,
         "is_verified": 1
     },
-
     {
         "_id": 12,
+        "name": "JYOTI SONI",
+        "company_name": "TAKE A TRIP TOUR AND TRAVEL",
+        "phone": "9027943676",
+        "email": "takeatriptourandtravel02@gmail.com",
+        "password": "User@12345",
+        "whatsapp": "9027943676",
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "is_authorised": 1,
+        "is_publicly_present": 1,
+        "is_verified": 1
+    },
+    {
+        "_id": 13,
         "name": "Wanderlust Travel World",
         "company_name": "Wanderlust Travel World",
         "phone": "7407300991",
@@ -181,7 +195,7 @@
         "is_verified": 0
     },
     {
-        "_id": 13,
+        "_id": 14,
         "name": "RR Tours and Travels",
         "company_name": "RR Tours and Travels",
         "phone": "6304234227",
@@ -196,7 +210,7 @@
         "is_verified": 0
     },
     {
-        "_id": 14,
+        "_id": 15,
         "name": "Finna Travel",
         "company_name": "Finna Travel",
         "phone": "7006457689",
@@ -211,7 +225,7 @@
         "is_verified": 0
     },
     {
-        "_id": 15,
+        "_id": 16,
         "name": "Bharat Ecab",
         "company_name": "Bharat Ecab",
         "phone": "8882906451",
@@ -226,7 +240,7 @@
         "is_verified": 0
     },
     {
-        "_id": 16,
+        "_id": 17,
         "name": "Trip Bouquet",
         "company_name": "Trip Bouquet",
         "phone": "7303193848",
@@ -241,7 +255,7 @@
         "is_verified": 0
     },
     {
-        "_id": 17,
+        "_id": 18,
         "name": "Trawell.in",
         "company_name": "Trawell.in",
         "phone": "7799591230",
@@ -256,7 +270,7 @@
         "is_verified": 0
     },
     {
-        "_id": 18,
+        "_id": 19,
         "name": "Qugo",
         "company_name": "Qugo",
         "phone": "7411940703",
@@ -271,7 +285,7 @@
         "is_verified": 0
     },
     {
-        "_id": 19,
+        "_id": 20,
         "name": "Bhalla Travels",
         "company_name": "Bhalla Travels",
         "phone": "7678223408",
@@ -286,7 +300,7 @@
         "is_verified": 0
     },
     {
-        "_id": 20,
+        "_id": 21,
         "name": "Cute Voyages",
         "company_name": "Cute Voyages",
         "phone": "8121202999",
@@ -301,7 +315,7 @@
         "is_verified": 0
     },
     {
-        "_id": 21,
+        "_id": 22,
         "name": "Holiday Trip Advisor",
         "company_name": "Holiday Trip Advisor",
         "phone": "8197200830",
@@ -316,7 +330,7 @@
         "is_verified": 0
     },
     {
-        "_id": 22,
+        "_id": 23,
         "name": "Trip To Sky Pvt Ltd",
         "company_name": "Trip To Sky Pvt Ltd",
         "phone": "8374837460",
@@ -332,7 +346,7 @@
     },
 
     {
-        "_id": 23,
+        "_id": 24,
         "name": "Taha International Tours and Travels",
         "company_name": "Taha International Tours and Travels",
         "phone": "8975850699",
@@ -347,7 +361,7 @@
         "is_verified": 0
     },
     {
-        "_id": 24,
+        "_id": 25,
         "name": "Aanantham Resorts",
         "company_name": "Aanantham Resorts",
         "phone": "9736200082",
@@ -362,7 +376,7 @@
         "is_verified": 0
     },
     {
-        "_id": 25,
+        "_id": 26,
         "name": " Travelbee Holiday's",
         "company_name": " Travelbee Holiday's",
         "phone": "9152023332",
@@ -377,8 +391,8 @@
         "is_verified": 0
     },
     {
-        "_id": 26,
-        "name": " Global Gateway",
+        "_id": 27,
+        "name": "Global Gateway",
         "company_name": " Global Gateway",
         "phone": " 7201017126",
         "whatsapp": " 7201017126",
@@ -392,7 +406,7 @@
         "is_verified": 0
     },
     {
-        "_id": 27,
+        "_id": 28,
         "name": " Around Pondy",
         "company_name": " Around Pondy",
         "phone": " 8940308019",
@@ -407,7 +421,7 @@
         "is_verified": 0
     },
     {
-        "_id": 28,
+        "_id": 29,
         "name": " Kesariya Travels ",
         "company_name": " Kesariya Travels ",
         "phone": " 7733937777 ",
@@ -422,7 +436,7 @@
         "is_verified": 0
     },
     {
-        "_id": 29,
+        "_id": 30,
         "name": "Ku Tour Travel",
         "company_name": "Ku Tour Travel",
         "phone": "9422267336",
@@ -1176,7 +1190,7 @@
         "is_verified": 0
     },
     {
-        "_id": 81,
+        "_id": 80,
         "name": "JK Holidays",
         "company_name": "JK Holidays",
         "phone": "9981401936",
@@ -1191,7 +1205,7 @@
         "is_verified": 0
     },
     {
-        "_id": 82,
+        "_id": 81,
         "name": "Rk Travel",
         "company_name": "Rk Travel",
         "phone": "9300436715",
@@ -1206,7 +1220,7 @@
         "is_verified": 0
     },
     {
-        "_id": 83,
+        "_id": 82,
         "name": "Travel Asia",
         "company_name": "Travel Asia",
         "phone": "9864211050",
@@ -1221,7 +1235,7 @@
         "is_verified": 0
     },
     {
-        "_id": 84,
+        "_id": 83,
         "name": "Hamara Jagdalpur",
         "company_name": "Hamara Jagdalpur",
         "phone": "9701900209",
@@ -1236,7 +1250,7 @@
         "is_verified": 0
     },
     {
-        "_id": 85,
+        "_id": 84,
         "name": "Agarwal tours",
         "company_name": "Agarwal tours",
         "phone": "6900471026",
@@ -1251,7 +1265,7 @@
         "is_verified": 0
     },
     {
-        "_id": 86,
+        "_id": 85,
         "name": "Uphoria Travels",
         "company_name": "Uphoria Travels",
         "phone": "8811883337",
@@ -1266,7 +1280,7 @@
         "is_verified": 0
     },
     {
-        "_id": 87,
+        "_id": 86,
         "name": "Jigyasa Tour and Travels",
         "company_name": "Jigyasa Tour and Travels",
         "phone": "9424298081",
@@ -1281,7 +1295,7 @@
         "is_verified": 0
     },
     {
-        "_id": 88,
+        "_id": 87,
         "name": "kaziranga Tour and Travels",
         "company_name": "kaziranga Tour and Travels",
         "phone": "9954208262",
@@ -1296,7 +1310,7 @@
         "is_verified": 0
     },
     {
-        "_id": 89,
+        "_id": 88,
         "name": "GPS Travel.",
         "company_name": "GPS Travel.",
         "phone": "6001089716",
@@ -1311,7 +1325,7 @@
         "is_verified": 0
     },
     {
-        "_id": 90,
+        "_id": 89,
         "name": "DD TRAVELS",
         "company_name": "DD TRAVELS",
         "phone": "8822088550",
