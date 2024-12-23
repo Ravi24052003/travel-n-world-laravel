@@ -75,6 +75,8 @@ public function getAllVerifiedTravelAgents(){
                  ->where('role', 'user')
                  ->get();
 
+
+
     return response()->json(PublicUserResource::collection($users), 200);
 }
 

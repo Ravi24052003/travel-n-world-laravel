@@ -22,12 +22,12 @@ class PublicUserResource extends JsonResource
             "instagram"=> $this->instagram,
             "youtube" => $this->youtube,
             'role' => $this->role,
-             'company_logo' => $this->company->company_logo,
-            'company_name' => $this->company->company_name,
-            'company_address' => $this->company->company_address,
-            'company_city' => $this->company->company_city,
-            'pin_code' => $this->company->pin_code,
-            'company_website' => $this->company->company_website,
+             'company_logo' => $this->company?->company_logo,
+            'company_name' => $this->company?->company_name,
+            'company_address' => $this->company?->company_address,
+            'company_city' => $this->company?->company_city,
+            'pin_code' => $this->company?->pin_code,
+            'company_website' => $this->company?->company_website,
            
         ];
     }
