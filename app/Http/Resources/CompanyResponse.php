@@ -18,7 +18,6 @@ class CompanyResponse extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
              'company_logo' => $this->company_logo,
-            'company_logo_storage_path' => $this->company_logo ? storage_path("app/public/".$this->company_logo) : null,
             'company_name' => $this->company_name,
             'company_address' => $this->company_address,
             'company_city' => $this->company_city,

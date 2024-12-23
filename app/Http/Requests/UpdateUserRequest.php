@@ -40,7 +40,8 @@ class UpdateUserRequest extends FormRequest
             'user_image' => 'nullable|image|max:2048',
             "is_authorised"=> ["nullable", "boolean"],
             "is_publicly_present"=> ["nullable", "boolean"],
-            "is_verified"=> ["nullable", "boolean"]
+            "is_verified"=> ["nullable", "boolean"],
+            "verification_date"=> ["nullable", "date"]
         ];
     }
 

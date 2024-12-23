@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -35,6 +36,10 @@ class UserResource extends JsonResource
             "is_authorised"=> $this->is_authorised,
             "is_publicly_present"=> $this->is_publicly_present,
             "is_verified"=> $this->is_verified,
+            "verification_date" => (new Carbon($this->verification_date))->format("Y-m-d"),
+            'created_at'=> (new Carbon($this->created_at))->format("Y-m-d"),
+            'updated_at'=> (new Carbon($this->updated_at))->format("Y-m-d"),
+
             "company"=>$this->company
         ];
     }

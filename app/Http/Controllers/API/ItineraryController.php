@@ -55,6 +55,7 @@ class ItineraryController extends Controller
             $thumbnail_file = $request->file("destination_thumbnail_file");
           
             $thumbnail_filename = time() . '_' . uniqid(). Str::random(8) . '.' . $thumbnail_file->getClientOriginalExtension();
+            
             $thumbnail_file->move($directory, $thumbnail_filename);
             $data["destination_thumbnail"] = 'itinerary_images/' . $thumbnail_filename;
         }

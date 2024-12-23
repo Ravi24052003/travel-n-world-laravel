@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table){
             $table->id();
             $table->string("name");
             $table->string("company_name");
@@ -33,6 +33,8 @@ return new class extends Migration
             $table->boolean("is_authorised")->default(false);
             $table->boolean("is_publicly_present")->default(false);
             $table->boolean("is_verified")->default(false);
+
+            $table->timestamp('verification_date')->nullable();
             $table->timestamps();
         });
     }

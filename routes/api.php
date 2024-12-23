@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\ItineraryController;
 use App\Http\Controllers\API\PublicController;
@@ -19,6 +20,8 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::apiResource("company", CompanyController::class);
 
     Route::apiResource("itinerary", ItineraryController::class);
+
+    Route::apiResource("blog", BlogController::class);
 
     Route::get('user-itineraries', [ItineraryController::class, "userItineraries"]);
 
@@ -62,4 +65,8 @@ require __DIR__.'/public_routes.php';
 //     ]);
 
 //     return response("Database has been refreshed and seeded.");
+// });
+
+// Route::get('users/{id}', function ($id) {
+ 
 // });

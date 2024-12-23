@@ -22,11 +22,12 @@ class PublicCompanyResource extends JsonResource
             'company_address' => $this->company_address,
             'company_city' => $this->company_city,
             'pin_code' => $this->pin_code,
-            'company_status' => $this->company_status,
-            'services_offered' => $this->services_offered, // Decoded JSON array of services
-            'number_of_staff' => $this->number_of_staff,
-            'about_company' => $this->about_company,
             'company_website' => $this->company_website,
+            "user_phone"=>$this->user->phone,
+            "user_whatsapp"=>$this->user->whatsapp,
+            "user_facebook"=>$this->user->facebook,
+            "user_instagram"=> $this->user->instagram,
+            "user_youtube" => $this->user->youtube,
             'user_role' => $this->user->role,
             'user_isAuthorised' => $this->user->isAuthorised
         ];

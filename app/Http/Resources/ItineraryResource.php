@@ -40,6 +40,7 @@ class ItineraryResource extends JsonResource
         'updated_at'=> (new Carbon($this->updated_at))->format("Y-m-d"),
         "user_name"=>$this->user->name,
         "user_company_name"=>$this->user->company_name,
+        "user_company_logo" => $this->user->company->company_logo,
         "user_phone"=>$this->user->phone,
         "user_whatsapp"=>$this->user->whatsapp,
         "user_facebook"=>$this->user->facebook,

@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function itinerary(){
         return $this->hasMany(Itinerary::class);
     }
+
+    public function blog(){
+        return $this->hasMany(Blog::class);
+    }
 }
