@@ -26,4 +26,14 @@ class Itinerary extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function leadPhoneEmail()
+    {
+        return $this->hasMany(LeadPhoneEmail::class);
+    }
+
+    public function leadQueryForCustomizeItinerary()
+    {
+        return $this->hasMany(LeadQueryForCustomizeItinerary::class);
+    }
 }

@@ -1368,7 +1368,20 @@
         "is_authorised": 1,
         "is_publicly_present": 1,
         "is_verified": 0
+    },
+    {
+        "_id": 94,
+        "name": "Sawant Singh",
+        "company_name": "Neeraj Travels & Tours",
+        "phone": "9425116776",
+        "whatsapp": "9329260670",
+        "email": "neerajtravels09@gmail.com",
+        "password": "User@12345",
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "is_authorised": 1,
+        "is_publicly_present": 1,
+        "is_verified": 1
     }
-  
-    
 ]

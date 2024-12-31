@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGeneralLeadRequest;
+use App\Http\Requests\StoreLeadPhoneEmailRequest;
+use App\Http\Requests\StoreLeadQueryForCustomizeItineraryRequest;
 use App\Http\Resources\BlogResource;
+use App\Http\Resources\GeneralLeadResource;
 use App\Http\Resources\ItineraryResource;
+use App\Http\Resources\LeadPhoneEmailResource;
+use App\Http\Resources\LeadQueryForCustomizedItineraryResource;
 use App\Http\Resources\PublicCompanyResource;
 use App\Http\Resources\PublicUserResource;
 use App\Models\Blog;
 use App\Models\Company;
+use App\Models\GeneralLead;
 use App\Models\Itinerary;
+use App\Models\LeadPhoneEmail;
+use App\Models\LeadQueryForCustomizeItinerary;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -80,6 +89,42 @@ public function getAllVerifiedTravelAgents(){
     return response()->json(PublicUserResource::collection($users), 200);
 }
 
+
+// lead controllers starts here 
+public function storeLeadPhoneEmail(StoreLeadPhoneEmailRequest $request){
+    $data = $request->validated();
+
+    $leadPhoneEmail = LeadPhoneEmail::create($data);
+
+    return response()->json([
+    'success' => 'You Phone Email Saved Successfully You Will be Contacted Soon',
+    'leadPhoneEmailResource' => new LeadPhoneEmailResource($leadPhoneEmail),
+    ], 201);
+}
+
+public function storeLeadQueryForCustomizeItinerary(StoreLeadQueryForCustomizeItineraryRequest $request){
+$data = $request->validated();
+
+$leadQueryForCustomizeItinerary = LeadQueryForCustomizeItinerary::create($data);
+
+return response()->json([
+'success' => 'You data For Query Customization Saved Successfully You Will be Contacted Soon',
+'leadQueryForCustomizeItineraryResource' => new LeadQueryForCustomizedItineraryResource($leadQueryForCustomizeItinerary)
+], 201);
+}
+
+
+public function storeGeneralLead(StoreGeneralLeadRequest $request){
+    $data = $request->validated();
+
+    $generalLead = GeneralLead::create($data);
+
+    return response()->json([
+    'success'=> 'Your data saved successfully you will contacted soon',
+    'generalLeadResource' => new GeneralLeadResource($generalLead)
+    ], 201);
+}
+// lead controllers ends here
 
 
 }

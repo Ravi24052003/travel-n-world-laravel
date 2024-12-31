@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\ItineraryController;
+use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\API\PublicController;
 use App\Http\Controllers\API\UserCRUDController;
 use Illuminate\Support\Facades\Artisan;
@@ -24,6 +25,20 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::apiResource("blog", BlogController::class);
 
     Route::get('user-itineraries', [ItineraryController::class, "userItineraries"]);
+
+    // leads routes starts here 
+    Route::get('lead-phone-email', [LeadController::class, "getVerifiedLeadsPhoneEmail"]);
+
+    Route::delete('lead-phone-email/{id}', [LeadController::class, "deleteVerifiedLeadPhoneEmail"]);
+
+    Route::get('lead-query-for-customize-itinerary', [LeadController::class, "getVerifiedLeadsQueryForCustomizeItinerary"]);
+
+    Route::delete('lead-query-for-customize-itinerary/{id}', [LeadController::class, "deleteVerifiedLeadQueryForCustomizeItinerary"]);
+
+    Route::get('general-lead', [LeadController::class, "getGeneralLeads"]);
+
+    Route::delete('general-lead/{id}', [LeadController::class, "deleteGeneralLead"]);
+    // lead routes ends here 
 
     Route::post('logout', [AuthController::class, "logout"]);
 });

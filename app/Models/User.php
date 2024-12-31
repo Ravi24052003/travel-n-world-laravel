@@ -52,4 +52,14 @@ class User extends Authenticatable
     public function blog(){
         return $this->hasMany(Blog::class);
     }
+
+    public function leadPhoneEmail()
+    {
+    return $this->hasManyThrough(LeadPhoneEmail::class, Itinerary::class);
+    }
+
+    public function leadQueryForCustomizeItinerary()
+    {
+    return $this->hasManyThrough(LeadQueryForCustomizeItinerary::class, Itinerary::class);
+    }
 }

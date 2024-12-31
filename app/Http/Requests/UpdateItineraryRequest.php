@@ -25,7 +25,7 @@ class UpdateItineraryRequest extends FormRequest
             'inclusion' => 'sometimes|string',
             'exclusion' => 'sometimes|string',
             'terms_and_conditions' => 'sometimes|string',
-            'pricing' => 'nullable|numeric',
+            'pricing' => 'nullable|string|max:255',
             'hotel_details_string' => 'sometimes|string',
             'title' => 'sometimes|string|max:255',
             'meta_title' => 'nullable|string|max:255',

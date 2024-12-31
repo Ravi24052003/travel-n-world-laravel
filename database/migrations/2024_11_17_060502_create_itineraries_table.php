@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('inclusion'); // Long text for inclusion
             $table->longText('exclusion'); // Long text for exclusion
             $table->longText('terms_and_conditions')->nullable(); // Long text for terms and conditions
-            $table->unsignedBigInteger('pricing')->nullable(); 
+            $table->string('pricing')->nullable(); 
             $table->json('hotel_details'); // JSON column for hotel details
             $table->string('title'); // Title
             $table->string('meta_title')->nullable(); // Nullable meta title
