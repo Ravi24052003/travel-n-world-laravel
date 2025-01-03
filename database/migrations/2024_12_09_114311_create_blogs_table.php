@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('blog_keywords');
             $table->text('blog_description');
             $table->string('blog_author_name')->nullable();
-            $table->string('blog_category');
+            $table->json('blog_category');
             $table->string('blog_meta_title');
             $table->string('blog_visibility')->default('public');
             $table->longText('blog_content');

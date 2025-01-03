@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBlogCategoryRequest;
 use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogCategoryRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Http\Resources\BlogCategoryResource;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -113,5 +117,43 @@ class BlogController extends Controller
         $blog->delete();
 
         return response()->json(['success' => 'Blog deleted successfully'], 200);
+    }
+
+
+    // blog_category table methods starts here
+    public function getAllBlogCategories()
+    {
+        $categories = BlogCategory::all();
+
+        return response()->json( BlogCategoryResource::collection($categories), 200);
+    }
+
+    public function storeBlogCategory(StoreBlogCategoryRequest $request)
+    {
+        $data = $request->validated();
+
+        $blog_category = BlogCategory::create($data);
+
+        return response()->json(['success' => 'category created successfully', 'blogCategory'=> new BlogCategoryResource($blog_category)], 201);
+    }
+
+    public function updateBlogCategory(UpdateBlogCategoryRequest $request, $id)
+    {
+        $data = $request->validated();
+
+        $blog_category = BlogCategory::findorFail($id);
+
+        $blog_category->update($data);
+
+        return response()->json(['success' => 'Category updated successfully', 'newBlogCategory' => new BlogCategoryResource($blog_category)], 200);
+    }
+
+    public function deleteBlogCategory($id)
+    {
+        $blog_category = BlogCategory::findorFail($id);
+
+        $blog_category->delete();
+
+        return response()->json(['success' => 'Category deleted successfully'], 204);
     }
 }

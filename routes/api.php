@@ -38,7 +38,15 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::get('general-lead', [LeadController::class, "getGeneralLeads"]);
 
     Route::delete('general-lead/{id}', [LeadController::class, "deleteGeneralLead"]);
+
     // lead routes ends here 
+
+    // blog category routes starts here
+ Route::get("blog-category", [BlogController::class, "getAllBlogCategories"]);
+ Route::post("blog-category", [BlogController::class, "storeBlogCategory"]);
+ Route::put("blog-category/{id}", [BlogController::class, "updateBlogCategory"]);
+ Route::delete("blog-category/{id}", [BlogController::class, "deleteBlogCategory"]);
+    // blog category routes ends here
 
     Route::post('logout', [AuthController::class, "logout"]);
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGeneralLeadRequest;
 use App\Http\Requests\StoreLeadPhoneEmailRequest;
 use App\Http\Requests\StoreLeadQueryForCustomizeItineraryRequest;
+use App\Http\Resources\BlogCategoryResource;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\GeneralLeadResource;
 use App\Http\Resources\ItineraryResource;
@@ -14,6 +15,7 @@ use App\Http\Resources\LeadQueryForCustomizedItineraryResource;
 use App\Http\Resources\PublicCompanyResource;
 use App\Http\Resources\PublicUserResource;
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\Company;
 use App\Models\GeneralLead;
 use App\Models\Itinerary;
@@ -126,5 +128,11 @@ public function storeGeneralLead(StoreGeneralLeadRequest $request){
 }
 // lead controllers ends here
 
+//get all blog categories
+public function getAllBlogCategories(){
+        $categories = BlogCategory::all();
+
+        return response()->json( BlogCategoryResource::collection($categories), 200);
+    }
 
 }

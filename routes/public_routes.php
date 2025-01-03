@@ -25,3 +25,7 @@ Route::post('lead-phone-email', [PublicController::class, 'storeLeadPhoneEmail']
 Route::post('lead-query-for-customize-itinerary', [PublicController::class, 'storeLeadQueryForCustomizeItinerary']);
 
 Route::post('general-lead', [PublicController::class, 'storeGeneralLead']);
+
+// public leads routes ends here 
+
+Route::get('public-blog-categories', [PublicController::class, 'getAllBlogCategories']);
