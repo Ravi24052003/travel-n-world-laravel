@@ -23,6 +23,7 @@ use App\Models\LeadPhoneEmail;
 use App\Models\LeadQueryForCustomizeItinerary;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PublicController extends Controller
 {
@@ -134,5 +135,48 @@ public function getAllBlogCategories(){
 
         return response()->json( BlogCategoryResource::collection($categories), 200);
     }
+
+// sharma work
+    public function generateSitemap()
+    {
+        $slugs = Blog::select('blog_slug')->get();
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
+    
+        $fixedUrls = [
+            'https://travelnworld.com/',
+            'https://travelnworld.com/about',
+            'https://travelnworld.com/contact',
+            'https://travelnworld.com/blog',
+            'https://travelnworld.com/testimonials',
+            'https://travelnworld.com/privacyPolicy',
+            'https://travelnworld.com/terms',
+            'https://travelnworld.com/b2b-signup',
+            'https://travelnworld.com/b2b-login'
+        ];
+    
+        foreach ($fixedUrls as $url) {
+            $xml .= '<url>';
+            $xml .= "<loc>$url</loc>";
+            $xml .= "<changefreq>weekly</changefreq>";
+            $xml .= "<priority>0.8</priority>";
+            $xml .= '</url>';
+        }
+    
+        foreach ($slugs as $slug) {
+            $url = "https://travelnworld.com/blog/" . $slug->blog_slug; 
+            $xml .= '<url>';
+            $xml .= "<loc>$url</loc>";
+            $xml .= "<changefreq>weekly</changefreq>";
+            $xml .= "<priority>0.7</priority>";
+            $xml .= '</url>';
+        }
+    
+        $xml .= '</urlset>';
+        return response($xml, 200)->header('Content-Type', 'application/xml');
+    }
+    // sharma work
+
+
 
 }

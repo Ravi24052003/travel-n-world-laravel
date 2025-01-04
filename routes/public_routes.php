@@ -29,3 +29,7 @@ Route::post('general-lead', [PublicController::class, 'storeGeneralLead']);
 // public leads routes ends here 
 
 Route::get('public-blog-categories', [PublicController::class, 'getAllBlogCategories']);
+
+// sharma work
+Route::get('sitemap.xml', [PublicController::class, 'generateSitemap']);
+// sharma work
