@@ -51,34 +51,13 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::post('logout', [AuthController::class, "logout"]);
 });
 
+require __DIR__.'/server.php';
+
 require __DIR__.'/public_routes.php';
 
 
-// Route::get('/storage-link', function(){
-//     Artisan::call('storage:link');
-
-//     return response("symbolic link created successfully");
-// });
 
 
-// Route::get("/unlink", function(){
-//     $publicStorageLink = public_path('storage');
-
-//     if (File::exists($publicStorageLink) && File::isDirectory($publicStorageLink)) {
-//         rmdir($publicStorageLink);
-//         return response("symbolic link removed successfully");
-//     } else {
-//         return response("Symbolic link does not exists");
-//     }
-// });
-
-
-
-// Route::get('/migrate', function(){
-//     Artisan::call('migrate', ['--force' => true]);
-
-//     return response("Database migrations completed successfully");
-// });
 
 
 // Route::get('/migrate-seed', function(){
