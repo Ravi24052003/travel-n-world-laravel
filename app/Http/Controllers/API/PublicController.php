@@ -64,7 +64,8 @@ class PublicController extends Controller
 
 
 public function getAllBlogs(){
-    $blogs = Blog::all();
+    $blogs = Blog::orderBy('created_at', 'desc')->get();
+
     return response()->json(BlogResource::collection($blogs), 200);
 }
 
