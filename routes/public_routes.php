@@ -22,6 +22,8 @@ Route::get('public-verified-travel-agents', [PublicController::class, 'getAllVer
 // public lead routes starts here 
 Route::post('lead-phone-email', [PublicController::class, 'storeLeadPhoneEmail']);
 
+Route::post("lead-refresh", [PublicController::class, "leadRefresh"]); 
+
 Route::post('lead-query-for-customize-itinerary', [PublicController::class, 'storeLeadQueryForCustomizeItinerary']);
 
 Route::post('general-lead', [PublicController::class, 'storeGeneralLead']);

