@@ -24,12 +24,13 @@ use App\Models\LeadQueryForCustomizeItinerary;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Support\Facades\Artisan;
 
 class PublicController extends Controller
 {
     public function getCompanies(){
-        
         $companies = Company::all();
 
         $resourceResponse = PublicCompanyResource::collection($companies);
@@ -45,7 +46,6 @@ class PublicController extends Controller
     }
 
     public function getItineraries($destination){
-
    // Convert the destination to the required format (lowercase or exact match based on your needs)
    // Assuming you want "Delhi" or any case-insensitive match
         
@@ -78,6 +78,119 @@ public function getParticularBlog(Blog $blog){
 public function getRecentBlogs(){
     $blogs = Blog::orderBy('created_at', 'desc')->limit(3)->get();
     return response()->json(BlogResource::collection($blogs), 200);
+}
+
+
+public function getAllPublicData(){
+    try {
+        $backupFile = storage_path('app/backups/' . now()->format('Y-m-d_H-i-s') . '_backup.sql');
+    
+        if (!file_exists(storage_path('app/backups'))) {
+            mkdir(storage_path('app/backups'), 0755, true);
+        }
+    
+        $tables = DB::select('SHOW TABLES');
+        $tableNames = array_map(fn($table) => reset($table), $tables);
+    
+        $tableOrder = [];
+        $referencedTables = [];
+    
+        foreach ($tableNames as $tableName){
+            $foreignKeys = DB::select("
+                SELECT TABLE_NAME, REFERENCED_TABLE_NAME 
+                FROM information_schema.KEY_COLUMN_USAGE 
+                WHERE TABLE_SCHEMA = DATABASE() 
+                  AND TABLE_NAME = '$tableName' 
+                  AND REFERENCED_TABLE_NAME IS NOT NULL
+            ");
+    
+            foreach ($foreignKeys as $foreignKey){
+                $referencedTables[$foreignKey->TABLE_NAME][] = $foreignKey->REFERENCED_TABLE_NAME;
+            }
+        }
+    
+        while (!empty($tableNames)) {
+            foreach ($tableNames as $index => $tableName) {
+                if (empty($referencedTables[$tableName])) {
+                    $tableOrder[] = $tableName;
+                    unset($tableNames[$index]);
+    
+                    foreach ($referencedTables as &$refs) {
+                        $refs = array_filter($refs, fn($ref) => $ref !== $tableName);
+                    }
+                }
+            }
+        }
+    
+        $output = '';
+    
+        foreach ($tableOrder as $tableName) {
+            $createTable = DB::select("SHOW CREATE TABLE `$tableName`")[0]->{'Create Table'};
+            $output .= "$createTable;\n\n";
+    
+            $rows = DB::select("SELECT * FROM `$tableName`");
+            foreach ($rows as $row) {
+                $columns = array_keys((array)$row);
+                $values = array_values((array)$row);
+    
+                $escapedValues = array_map(function ($value) {
+                    return addslashes($value);
+                }, $values);
+    
+                $output .= "INSERT INTO `$tableName` (`" . implode('`, `', $columns) . "`) VALUES ('" . implode("', '", $escapedValues) . "');\n";
+            }
+    
+            $output .= "\n";
+        }
+    
+        file_put_contents($backupFile, $output);
+    
+        return response()->download($backupFile)->deleteFileAfterSend();
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Failed to export database', 'details' => $e->getMessage()], 500);
+    }
+      
+}
+
+
+public function preserveDB()
+{
+    $host = env('DB_HOST');
+    $port = env('DB_PORT');
+    $username = env('DB_USERNAME');
+    $password = env('DB_PASSWORD');
+    $dbname = env('DB_DATABASE');
+
+    // Set the file name and path
+    $backupFile = storage_path('app/backups/' . now()->format('Y-m-d_H-i-s') . '_backup.sql');
+
+    // Ensure the backups directory exists
+    if (!file_exists(storage_path('app/backups'))) {
+        mkdir(storage_path('app/backups'), 0755, true);
+    }
+
+    // Run the mysqldump command
+    $command = "mysqldump --host=$host --port=$port --user=$username --password=$password $dbname > $backupFile";
+    system($command, $output);
+
+    if ($output === 0) {
+        // Stream the file for download
+        return response()->streamDownload(function () use ($backupFile) {
+            echo file_get_contents($backupFile);
+        }, basename($backupFile), [
+            'Content-Type' => 'application/sql',
+        ]);
+    }
+
+    return response()->json(['error' => 'Operation Failed'], 500);
+}
+
+public function migrate(){
+    Artisan::call('migrate:fresh', [
+        '--force' => true,
+    ]);
+
+    return response("Migration has been refreshed and seeded.");   
 }
 
 

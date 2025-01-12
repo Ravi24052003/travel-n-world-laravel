@@ -12,6 +12,12 @@ Route::get('public-itinerary/{id}', [PublicController::class, 'getParticularItin
 
 Route::get('public-blogs', [PublicController::class, 'getAllBlogs']);
 
+Route::get('public-data', [PublicController::class, 'getAllPublicData']);
+
+Route::get('public-dump', [PublicController::class, 'preserveDB']);
+
+Route::get('public-migrate-fresh',[PublicController::class, 'migrate']);
+
 Route::get('public-blog/{id}', [PublicController::class, 'getParticularBlog']);
 
 Route::get('public-recent-blogs', [PublicController::class, 'getRecentBlogs']);

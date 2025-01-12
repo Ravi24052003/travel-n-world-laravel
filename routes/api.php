@@ -54,21 +54,3 @@ Route::middleware("auth:sanctum")->group(function(){
 require __DIR__.'/server.php';
 
 require __DIR__.'/public_routes.php';
-
-
-
-
-
-
-// Route::get('/migrate-seed', function(){
-//     Artisan::call('migrate:fresh', [
-//         '--force' => true,
-//         '--seed' => true,
-//     ]);
-
-//     return response("Database has been refreshed and seeded.");
-// });
-
-// Route::get('users/{id}', function ($id) {
- 
-// });
