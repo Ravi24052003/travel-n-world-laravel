@@ -64,6 +64,20 @@ class PublicController extends Controller
     }
 
 
+    public function getRandomItineraries(){
+        $itineraries = Itinerary::where('itinerary_visibility', 'public')
+                                ->whereHas('user', function ($query) {
+                                    $query->where('is_authorised', true)
+                                          ->where('is_publicly_present', true);
+                                })
+                                ->inRandomOrder()
+                                ->limit(5)
+                                ->get();
+
+        return response()->json(ItineraryResource::collection($itineraries), 200);
+    }
+    
+
 public function getAllBlogs(){
     $blogs = Blog::orderBy('created_at', 'desc')->get();
 
@@ -155,34 +169,58 @@ public function getAllPublicData(){
 
 public function preserveDB()
 {
+    // Database credentials from environment variables
     $host = env('DB_HOST');
     $port = env('DB_PORT');
     $username = env('DB_USERNAME');
     $password = env('DB_PASSWORD');
     $dbname = env('DB_DATABASE');
 
-    // Set the file name and path
-    $backupFile = storage_path('app/backups/' . now()->format('Y-m-d_H-i-s') . '_backup.sql');
+    // Set the file name and path for the backup
+    $backupFile = storage_path('app/backups/' .'backup.sql');
 
     // Ensure the backups directory exists
     if (!file_exists(storage_path('app/backups'))) {
         mkdir(storage_path('app/backups'), 0755, true);
     }
 
-    // Run the mysqldump command
-    $command = "mysqldump --host=$host --port=$port --user=$username --password=$password $dbname > $backupFile";
-    system($command, $output);
+    // Construct mysqldump command with max_allowed_packet for large data handling
+    $command = "mysqldump --host=$host --port=$port --user=$username --password=$password $dbname > " . escapeshellarg($backupFile);
 
-    if ($output === 0) {
-        // Stream the file for download
-        return response()->streamDownload(function () use ($backupFile) {
-            echo file_get_contents($backupFile);
-        }, basename($backupFile), [
-            'Content-Type' => 'application/sql',
-        ]);
+    $output = null;
+    $returnCode = null;
+
+    // Execute the mysqldump command and capture output and return code
+    exec($command . ' 2>&1', $output, $returnCode);
+
+    if ($returnCode === 0) { // Check if the dump was successful
+        // Define the path to the public backup folder
+        $publicBackupFolder = public_path('backups');
+
+        // Ensure the public backups folder exists
+        if (!file_exists($publicBackupFolder)) {
+            mkdir($publicBackupFolder, 0755, true);
+        }
+
+        // Move the file to the public backup folder
+        $newBackupPath = $publicBackupFolder . '/' . basename($backupFile);
+        $moved = rename($backupFile, $newBackupPath);
+
+        // Check if the file was successfully moved
+        if ($moved) {
+            // Generate a public URL for the file
+            $url = asset('backups/' . basename($newBackupPath));
+
+            // Return the URL for the user to download the backup
+            return response()->json(['url' => $url], 200);
+        }
+
+        // If the file could not be moved, return an error response
+        return response()->json(['error' => 'Failed to move backup file.'], 500);
     }
 
-    return response()->json(['error' => 'Operation Failed'], 500);
+    // If the mysqldump command failed, return an error response
+    return response()->json(['error' => 'Database backup failed.'], 500);
 }
 
 public function migrate(){

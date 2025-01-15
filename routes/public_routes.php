@@ -8,6 +8,8 @@ Route::get('public-companies', [PublicController::class, 'getCompanies']);
 
 Route::get('public-itineraries/{destination}', [PublicController::class, 'getItineraries']);
 
+Route::get('public-random-itineraries', [PublicController::class, 'getRandomItineraries']);
+
 Route::get('public-itinerary/{id}', [PublicController::class, 'getParticularItinerary']);
 
 Route::get('public-blogs', [PublicController::class, 'getAllBlogs']);
