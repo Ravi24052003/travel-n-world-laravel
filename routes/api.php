@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BlogContentImagesController;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\ItineraryController;
@@ -47,6 +48,10 @@ Route::middleware("auth:sanctum")->group(function(){
  Route::put("blog-category/{id}", [BlogController::class, "updateBlogCategory"]);
  Route::delete("blog-category/{id}", [BlogController::class, "deleteBlogCategory"]);
     // blog category routes ends here
+
+    // blog content images route starts here 
+   Route::apiResource("blogContentImages", BlogContentImagesController::class);
+    // blog content images route ends here 
 
     Route::post('logout', [AuthController::class, "logout"]);
 });
