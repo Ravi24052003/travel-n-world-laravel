@@ -22,8 +22,8 @@ class StoreItineraryRequest extends FormRequest
         return [
             'days_information_string' => 'required|string',
             'destination_detail' => 'required|string',
-            'inclusion' => 'required|string',
-            'exclusion' => 'required|string',
+            'inclusion' => 'nullable|string',
+            'exclusion' => 'nullable|string',
             'terms_and_conditions' => 'nullable|string',
             'pricing' => 'nullable|string|max:255',
             'hotel_details_string' => 'required|string',
