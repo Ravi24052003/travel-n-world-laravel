@@ -42,3 +42,13 @@ Route::get('public-blog-categories', [PublicController::class, 'getAllBlogCatego
 // sharma work
 Route::get('sitemap.xml', [PublicController::class, 'generateSitemap']);
 // sharma work
+
+
+
+// routes for international itineraries
+Route::get('public-five-international-itineraries', [PublicController::class, 'getFiveInternationalItineraries']);
+Route::get('public-thirty-international-itineraries', [PublicController::class, 'getThirtyInternationalItineraries']);
+
+// routes for domestic itineraries
+Route::get('public-five-domestic-itineraries', [PublicController::class, 'getFiveDomesticItineraries']);
+Route::get('public-thirty-domestic-itineraries', [PublicController::class, 'getThirtyDomesticItineraries']);

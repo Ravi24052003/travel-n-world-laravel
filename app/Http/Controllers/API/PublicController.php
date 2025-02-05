@@ -76,7 +76,268 @@ class PublicController extends Controller
 
         return response()->json(ItineraryResource::collection($itineraries), 200);
     }
-    
+
+
+
+
+// custom function to get 5 random itineraries with international destinations
+    public function getFiveInternationalItineraries()
+    {
+        // Define the list of allowed international destinations.
+        $internationalDestinations = [
+            'Thailand',
+            'UAE',
+            'Indonesia',
+            'Maldives',
+            'Saudi-Arabia',
+            'Malaysia',
+            'USA',
+            'Spain',
+            'Israel',
+            'France',
+            'China',
+            'Vietnam',
+            'UK',
+            'Tunisia',
+            'Sri-Lanka',
+            'Russia',
+            'Japan',
+            'Great-Britain',
+            'Italy',
+            'Estonia',
+            'Australia',
+            'Turkey',
+        ];
+
+        // Build the base query with common conditions.
+        $query = Itinerary::where('itinerary_visibility', 'public')
+            ->whereHas('user', function ($query) {
+                $query->where('is_authorised', true)
+                      ->where('is_publicly_present', true);
+            });
+
+        // Filter itineraries that have any of the allowed international destinations in the JSON column.
+        $query->where(function ($q) use ($internationalDestinations) {
+            foreach ($internationalDestinations as $destination) {
+                $q->orWhereJsonContains('selected_destination->value', $destination);
+            }
+        });
+
+        // Get 5 random itineraries matching the criteria.
+        $itineraries = $query->inRandomOrder()
+            ->limit(5)
+            ->get();
+
+        // Return the itineraries as a JSON response.
+        return response()->json(ItineraryResource::collection($itineraries), 200);
+    }
+// custom function to get 5 random itineraries with international destinations
+
+
+
+
+
+
+// custom function to get 30 random itineraries with international destinations
+public function getThirtyInternationalItineraries()
+{
+    // Define the list of allowed international destinations.
+    $internationalDestinations = [
+        'Thailand',
+        'UAE',
+        'Indonesia',
+        'Maldives',
+        'Saudi-Arabia',
+        'Malaysia',
+        'USA',
+        'Spain',
+        'Israel',
+        'France',
+        'China',
+        'Vietnam',
+        'UK',
+        'Tunisia',
+        'Sri-Lanka',
+        'Russia',
+        'Japan',
+        'Great-Britain',
+        'Italy',
+        'Estonia',
+        'Australia',
+        'Turkey',
+    ];
+
+    // Build the base query with common conditions.
+    $query = Itinerary::where('itinerary_visibility', 'public')
+        ->whereHas('user', function ($query) {
+            $query->where('is_authorised', true)
+                  ->where('is_publicly_present', true);
+        });
+
+    // Filter itineraries that have any of the allowed international destinations in the JSON column.
+    $query->where(function ($q) use ($internationalDestinations) {
+        foreach ($internationalDestinations as $destination) {
+            $q->orWhereJsonContains('selected_destination->value', $destination);
+        }
+    });
+
+    // Get 5 random itineraries matching the criteria.
+    $itineraries = $query->inRandomOrder()
+        ->limit(30)
+        ->get();
+
+    // Return the itineraries as a JSON response.
+    return response()->json(ItineraryResource::collection($itineraries), 200);
+}
+// custom function to get 30 random itineraries with international destinations
+
+
+
+
+
+// custom function to get 5 random itineraries with domestic destinations
+public function getFiveDomesticItineraries()
+{
+    // Define the list of allowed domestic destinations.
+    $domesticDestinations = [
+        'Kerala',
+        'Goa',
+        'Delhi',
+        'Rajasthan',
+        'Ladakh',
+        'Andaman',
+        'Andhra-Pradesh',
+        'Arunachal-Pradesh',
+        'Assam',
+        'Bihar',
+        'Chhattisgarh',
+        'Gujarat',
+        'Haryana',
+        'Himachal-Pradesh',
+        'Jharkhand',
+        'Karnataka',
+        'Kashmir',
+        'Madhya-Pradesh',
+        'Maharashtra',
+        'Manipur',
+        'Meghalaya',
+        'Mizoram',
+        'Nagaland',
+        'Odisha',
+        'Punjab',
+        'Sikkim',
+        'Tamil-Nadu',
+        'Telangana',
+        'Tripura',
+        'Uttar-Pradesh',
+        'Uttarakhand',
+        'West-Bengal',
+        'Chandigarh',
+        'Lakshadweep',
+        'Puducherry',
+    ];
+
+    // Build the base query with common conditions.
+    $query = Itinerary::where('itinerary_visibility', 'public')
+        ->whereHas('user', function ($query) {
+            $query->where('is_authorised', true)
+                  ->where('is_publicly_present', true);
+        });
+
+    // Filter itineraries that have any of the allowed domestic destinations in the JSON column.
+    $query->where(function ($q) use ($domesticDestinations) {
+        foreach ($domesticDestinations as $destination) {
+            $q->orWhereJsonContains('selected_destination->value', $destination);
+        }
+    });
+
+    // Retrieve 5 random itineraries matching the criteria.
+    $itineraries = $query->inRandomOrder()
+        ->limit(5)
+        ->get();
+
+    // Return the itineraries as a JSON response.
+    return response()->json(ItineraryResource::collection($itineraries), 200);
+}
+// custom function to get 5 random itineraries with domestic destinations
+  
+
+
+
+
+
+
+
+// custom function to get 30 random itineraries with domestic destinations
+public function getThirtyDomesticItineraries()
+{
+    // Define the list of allowed domestic destinations.
+    $domesticDestinations = [
+        'Kerala',
+        'Goa',
+        'Delhi',
+        'Rajasthan',
+        'Ladakh',
+        'Andaman',
+        'Andhra-Pradesh',
+        'Arunachal-Pradesh',
+        'Assam',
+        'Bihar',
+        'Chhattisgarh',
+        'Gujarat',
+        'Haryana',
+        'Himachal-Pradesh',
+        'Jharkhand',
+        'Karnataka',
+        'Kashmir',
+        'Madhya-Pradesh',
+        'Maharashtra',
+        'Manipur',
+        'Meghalaya',
+        'Mizoram',
+        'Nagaland',
+        'Odisha',
+        'Punjab',
+        'Sikkim',
+        'Tamil-Nadu',
+        'Telangana',
+        'Tripura',
+        'Uttar-Pradesh',
+        'Uttarakhand',
+        'West-Bengal',
+        'Chandigarh',
+        'Lakshadweep',
+        'Puducherry',
+    ];
+
+    // Build the base query with common conditions.
+    $query = Itinerary::where('itinerary_visibility', 'public')
+        ->whereHas('user', function ($query) {
+            $query->where('is_authorised', true)
+                  ->where('is_publicly_present', true);
+        });
+
+    // Filter itineraries that have any of the allowed domestic destinations in the JSON column.
+    $query->where(function ($q) use ($domesticDestinations) {
+        foreach ($domesticDestinations as $destination) {
+            $q->orWhereJsonContains('selected_destination->value', $destination);
+        }
+    });
+
+    // Retrieve 5 random itineraries matching the criteria.
+    $itineraries = $query->inRandomOrder()
+        ->limit(30)
+        ->get();
+
+    // Return the itineraries as a JSON response.
+    return response()->json(ItineraryResource::collection($itineraries), 200);
+}
+// custom function to get 30 random itineraries with domestic destinations
+
+
+
+
+
 
 public function getAllBlogs(){
     $blogs = Blog::orderBy('created_at', 'desc')->get();
