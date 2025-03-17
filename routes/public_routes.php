@@ -26,6 +26,7 @@ Route::get('public-recent-blogs', [PublicController::class, 'getRecentBlogs']);
 
 Route::get('public-verified-travel-agents', [PublicController::class, 'getAllVerifiedTravelAgents']);
 
+Route::get('public-verified-travel-agent/{id}', [PublicController::class, 'getParticularVerifiedTravelAgent']);
 
 // public lead routes starts here 
 Route::post('lead-phone-email', [PublicController::class, 'storeLeadPhoneEmail']);

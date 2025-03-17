@@ -507,6 +507,23 @@ public function getAllVerifiedTravelAgents(){
 }
 
 
+public function getParticularVerifiedTravelAgent($id)
+{
+    // Fetch the user with the related company and itineraries using eager loading
+    $verifiedTravelAgentDetails = User::with(['company'])
+    ->where('id', $id)
+    ->where('is_authorised', true)
+    ->where('is_publicly_present', true)
+    ->where('is_verified', true)
+    ->where('role', 'user')
+    ->firstOrFail();
+
+    // Return the entire data in a single response
+    return response()->json($verifiedTravelAgentDetails, 200);
+}
+
+
+
 // lead controllers starts here 
 public function storeLeadPhoneEmail(StoreLeadPhoneEmailRequest $request){
     $data = $request->validated();
